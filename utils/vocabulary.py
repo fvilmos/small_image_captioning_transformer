@@ -47,8 +47,8 @@ class Vocabulary:
         # invert k,v get word2idx variable
         self.word2idx = {v:int(k) for k,v in t_idx2word.items()}
 
-def custom_word_tokenize(text):
-    text = text.lower()
-    # split by spaces and, keep punctuation as separate tokens
-    tokens = re.findall(r"[\w']+|[.,!?;()]", text)
-    return tokens
+    def custom_word_tokenize(self, text):
+        text = text.lower()
+        # split by spaces and, keep punctuation as separate tokens
+        tokens = re.findall(r"[\w']+|[.,!?;()]", text)
+        return tokens

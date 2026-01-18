@@ -48,6 +48,7 @@ print (cap[0])
 
 |Backbone|FLOPS[G]|Params[M]|
 |---|---|---|
+|MobileNetV2Encoder|1.48|6.56|
 |CNNEncoder (resnet18 based)|6.41|39.31|
 |VitEncoder (Vision Transformer)|11.46|87.40|
 

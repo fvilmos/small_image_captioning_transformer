@@ -6,6 +6,25 @@
 import torch
 import torch.nn as nn
 
+class MobileNetV2Encoder(torch.nn.Module):
+    """
+    Use MobileNetV2 as backbone
+    """
+    def __init__(self):
+        super().__init__()
+        from torchvision.models import mobilenet_v2, MobileNet_V2_Weights
+        
+        # pretrained model, get the features
+        mobilenet = mobilenet_v2(weights=MobileNet_V2_Weights.IMAGENET1K_V1)
+        # fetures 1280, 7, 7
+        self.features = mobilenet.features
+        
+    def forward(self, x):
+        x = self.features(x) # in: B, C, H, W
+        x = x.flatten(2).permute(0, 2, 1) # out: B, HxW, C
+        return x
+
+
 class CNNEncoder(nn.Module):
     """
     Use CNN as backbone
